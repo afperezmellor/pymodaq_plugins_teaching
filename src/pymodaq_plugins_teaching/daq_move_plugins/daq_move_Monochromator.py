@@ -35,9 +35,8 @@ class DAQ_Move_Monochromator(DAQ_Move_base):
 
     """
     is_multiaxes = False  # TODO for your plugin set to True if this plugin is controlled for a multiaxis controller
-    _axis_names: Union[List[str], Dict[str, int]] = ['Axis1', 'Axis2']  # TODO for your plugin: complete the list
-    _controller_units: Union[str, List[str]] = 'mm'  # TODO for your plugin: put the correct unit here, it could be
-    # TODO  a single str (the same one is applied to all axes) or a list of str (as much as the number of axes)
+    _axis_names: Union[List[str], Dict[str, int]] = ['']
+    _controller_units: Union[str, List[str]] = 'nm'
     _epsilon: Union[float, List[float]] = 0.1  # TODO replace this by a value that is correct depending on your controller
     # TODO it could be a single float of a list of float (as much as the number of axes)
     data_actuator_type = DataActuatorType.DataActuator  # wether you use the new data style for actuator otherwise set this
@@ -61,11 +60,10 @@ class DAQ_Move_Monochromator(DAQ_Move_base):
 
         Returns
         -------
-        float: The position obtained after scaling conversion.
+        DataActuator: The position obtained after scaling conversion.
         """
         ## TODO for your custom plugin
-        raise NotImplementedError  # when writing your own plugin remove this line
-        pos = DataActuator(data=self.controller.your_method_to_get_the_actuator_value(),  # when writing your own plugin replace this line
+        pos = DataActuator(data=self.controller.get_wavelength() ,  # when writing your own plugin replace this line
                            units=self.axis_unit)
         pos = self.get_position_with_scaling(pos)
         return pos
