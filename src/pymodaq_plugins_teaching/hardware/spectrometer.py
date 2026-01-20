@@ -19,7 +19,7 @@ class Spectrometer:
     Nx = 256
     infos = 'Spectrometer Controller Wrapper 0.1.0'
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
         self._amp = 10
