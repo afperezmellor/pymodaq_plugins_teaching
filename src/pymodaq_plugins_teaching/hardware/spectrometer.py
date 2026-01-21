@@ -37,7 +37,7 @@ class Spectrometer:
         self._lambda = 532
         self._target_lambda = self._lambda
 
-        self._lambda0 = 528
+        self._lambda0 = 540
 
     def open_communication(self):
         return True
